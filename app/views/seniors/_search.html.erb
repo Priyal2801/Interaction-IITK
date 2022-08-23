@@ -1,0 +1,6 @@
+<%= search_form_for @query, url: search_seniors_path , method: :get, class: 'd-flex' do |f| %>
+    <%= f.search_field :affiliation_includes, 
+    placeholder: "Search...",
+    class: "searchTerm" %>
+    <%= f.submit "Search!" , class: "btn btn-primary searchButton" %>
+<% end %>

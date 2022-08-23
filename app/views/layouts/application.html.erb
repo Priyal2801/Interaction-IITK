@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tag %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <div id="header" class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+         <div class="navbar-header">
+            <%= link_to "Home", root_path, class: "navbar-brand" %>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right">
+            <% if signed_in? -%>
+              <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
+            <% else -%>
+              <%= link_to t(".sign_in"), sign_in_path %>
+            <% end -%>
+          </ul>
+        </div>
+      </nav>
+  </div>
+
+  <section class="container">
+  <div id="flash">
+    <% flash.each do |key, value| -%>
+      <div class="flash alert <%= alert_class(key) %>"><%=h value %></div>
+    <% end %>
+  </div>
+
+  <%= yield %>
+  </section>
+</body>
+</html>

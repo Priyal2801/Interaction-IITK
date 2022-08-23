@@ -1,0 +1,17 @@
+<%= form_with(model: senior, local: true) do |form| %>
+  <% if senior.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(senior.errors.count, "error") %> prohibited this senior from being saved:</h2>
+
+      <ul>
+        <% senior.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
